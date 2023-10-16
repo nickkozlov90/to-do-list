@@ -29,7 +29,7 @@
         <li>
           Tags:
           {% for tag in task.tags.all %}
-          {{tag }}
+          {{ tag }}
           {% endfor %}
           <a href="{% url 'to_do_list_app:task-update' pk=task.id %}">Update</a>
           <a href="{% url 'to_do_list_app:task-delete' pk=task.id %}">Delete</a>
@@ -38,7 +38,7 @@
     {% endfor %}
 
   {% else %}
-      <p>There are no manufacturers in the service.</p>
+      <p>There are no tasks.</p>
   {% endif %}
 
 {% endblock content%}
