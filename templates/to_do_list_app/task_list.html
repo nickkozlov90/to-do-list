@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 
 {% block content %}
@@ -15,10 +16,26 @@
     {% for task in task_list %}
       <ul>
         <li>
-            {{ task.content }} {{ task.is_done }}
+          {{ task.content }} {{ task.is_done|yesno:"Done,Not done" }}
+
+          <a href="{% url 'to_do_list_app:change-task-status' pk=task.id %}" class="btn btn-primary link-to-page">
+            {{ task.is_done|yesno:"Undo,Complete" }}
+          </a>
+
         </li>
         <li>
-            Created: {{ task.country }}
+          Created: {{ task.created }}
+          {% if task.deadline %}
+          Deadline: {{ task.deadline }}
+          {% endif %}
+        </li>
+        <li>
+          Tags:
+          {% for tag in task.tags.all %}
+          {{tag }}
+          {% endfor %}
+          <a href="{% url 'to_do_list_app:task-update' pk=task.id %}">Update</a>
+          <a href="{% url 'to_do_list_app:task-delete' pk=task.id %}">Delete</a>
         </li>
       </ul>
     {% endfor %}

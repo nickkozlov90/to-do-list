@@ -1,0 +1,56 @@
+[
+  {
+    "model": "to_do_list_app.task",
+    "pk": 1,
+    "fields": {
+      "content": "Buy 3 carrots and 1 pineapple",
+      "created": "2022-04-18T19:07:00+02:00",
+      "deadline": null,
+      "is_done": "False",
+      "tags": [2]
+    }
+  },
+  {
+    "model": "to_do_list_app.task",
+    "pk": 2,
+    "fields": {
+      "content": "Clean windows",
+      "created": "2022-04-19T14:30:00+02:00",
+      "deadline": "2022-04-19T14:30:00+02:00",
+      "is_done": "True",
+      "tags": [3, 2]
+    }
+  },
+  {
+    "model": "to_do_list_app.task",
+    "pk": 3,
+    "fields": {
+      "content": "Complete project",
+      "created": "2022-04-19T13:14:00+02:00",
+      "deadline": "2022-04-19T18:30:00+02:00",
+      "is_done": "True",
+      "tags": [1]
+    }
+  },
+  {
+    "model": "to_do_list_app.tag",
+    "pk": 1,
+    "fields": {
+      "name": "work"
+    }
+  },
+  {
+    "model": "to_do_list_app.tag",
+    "pk": 2,
+    "fields": {
+      "name": "shop"
+    }
+  },
+  {
+    "model": "to_do_list_app.tag",
+    "pk": 3,
+    "fields": {
+      "name": "home"
+    }
+  }
+]

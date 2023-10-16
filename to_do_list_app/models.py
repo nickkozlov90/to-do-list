@@ -20,3 +20,8 @@ class Task(models.Model):
 
     def __str__(self):
         return f"{self.content}"
+
+    def get_queryset(self):
+        return Task.objects.prefetch_related('tags')
+
+
