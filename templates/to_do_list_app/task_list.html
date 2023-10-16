@@ -10,18 +10,15 @@
     </a>
   </h1>
 
-
   {% if task_list %}
 
     {% for task in task_list %}
       <ul>
         <li>
           {{ task.content }} {{ task.is_done|yesno:"Done,Not done" }}
-
           <a href="{% url 'to_do_list_app:change-task-status' pk=task.id %}" class="btn btn-primary link-to-page">
             {{ task.is_done|yesno:"Undo,Complete" }}
           </a>
-
         </li>
         <li>
           Created: {{ task.created }}
