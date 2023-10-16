@@ -11,7 +11,7 @@ class Tag(models.Model):
 class Task(models.Model):
     content = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
-    deadline = models.DateTimeField(null=True)
+    deadline = models.DateTimeField(null=True, blank=True)
     is_done = models.BooleanField()
     tags = models.ManyToManyField(Tag, related_name="tasks")
 
@@ -23,5 +23,3 @@ class Task(models.Model):
 
     def get_queryset(self):
         return Task.objects.prefetch_related('tags')
-
-
