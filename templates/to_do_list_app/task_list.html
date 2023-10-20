@@ -13,20 +13,33 @@
   {% if task_list %}
 
     {% for task in task_list %}
-      <ul>
+      <ul style="list-style: none">
         <li>
-          {{ task.content }} {{ task.is_done|yesno:"Done,Not done" }}
-          <a href="{% url 'to_do_list_app:change-task-status' pk=task.id %}" class="btn btn-primary link-to-page">
-            {{ task.is_done|yesno:"Undo,Complete" }}
-          </a>
+          <strong>
+            {{ task.content }}
+            {% if task.is_done %}
+              <span style="color: green;">Done</span>
+              <a href="{% url 'to_do_list_app:change-task-status' pk=task.id %}" class="btn btn-secondary link-to-page">
+                Undo
+              </a>
+            {% else %}
+              <span style="color: red;">Not done</span>
+              <a href="{% url 'to_do_list_app:change-task-status' pk=task.id %}" class="btn btn-success link-to-page">
+                Complete
+              </a>
+            {% endif %}
+          </strong>
+<!--          <a href="{% url 'to_do_list_app:change-task-status' pk=task.id %}" class="btn btn-success link-to-page">-->
+<!--            {{ task.is_done|yesno:"Undo,Complete" }}-->
+<!--          </a>-->
         </li>
         <li>
           Created: {{ task.created }}
           {% if task.deadline %}
-          Deadline: {{ task.deadline }}
+          <span style="color: purple;">Deadline: {{ task.deadline }}</span>
           {% endif %}
         </li>
-        <li>
+        <li style="color: grey;">
           Tags:
           {% for tag in task.tags.all %}
           {{ tag }}
@@ -35,6 +48,8 @@
           <a href="{% url 'to_do_list_app:task-delete' pk=task.id %}">Delete</a>
         </li>
       </ul>
+      <hr>
+
     {% endfor %}
 
   {% else %}
